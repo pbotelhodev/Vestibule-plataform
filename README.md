@@ -82,3 +82,7 @@ $ npm install
 
 # 4. Execute o servidor de desenvolvimento
 $ npm run dev
+
+
+📝 Autor
+Feito com ❤️ por Pedro Botelho
