@@ -48,7 +48,7 @@ const Header = () => {
             <div className="perfilUser">
               <p className="paragrafoUser">
                 {userAtual.isTeacher === "director"
-                  ? "Olá Diretor"
+                  ? "Olá Administrador"
                   : userAtual.isTeacher === true
                   ? "Olá Professor(a)"
                   : "Olá Aluno(a)"}
