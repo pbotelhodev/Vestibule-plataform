@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const PageLogin = () => {
   //Funcão Naviagte para navegar entre as paginas por meio JS
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const keyLocalStorage = "UserQuiz";
+    const verifyLocalStorage = localStorage.getItem(keyLocalStorage);
+
+    if (!verifyLocalStorage) {
+      const defaultUser = [
+        {
+          id: 999,
+          isTeacher: "director", // Perfil de Administrador
+          nomeCompleto: "Usuário Padrão",
+          primeiroNome: "Usuário",
+          sobrenome: "Padrão",
+          email: "padraouser@gmail.com",
+          cpf: "12345678910",
+          data: "2002-04-08",
+          telefone: "38999009900",
+          senha: "userPadrao*",
+        },
+      ];
+      localStorage.setItem(keyLocalStorage, JSON.stringify(defaultUser));
+    }
+  }, []);
+  
   //DataBase
-  const dbUser = JSON.parse(localStorage.getItem("UserQuiz")) || [
-    {
-      id: 9999,
-      nome: "Usuário Padrão",
-      isTeacher: true,
-      senha: "userPadrao123",
-    },
-  ];
+  const dbUser = JSON.parse(localStorage.getItem("UserQuiz"))
 
   //Const de State para área de login:
   const [inputId, setInputId] = useState("");
