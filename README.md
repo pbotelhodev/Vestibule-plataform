@@ -1,16 +1,84 @@
-# React + Vite
+# 📚 Vestibule Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Plataforma educacional completa para gestão e aplicação de simulados com controle de acesso hierárquico.
 
-Currently, two official plugins are available:
+![Status do Projeto](https://img.shields.io/badge/STATUS-CONCLUÍDO-brightgreen?style=for-the-badge)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 💻 Sobre o Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O **Vestibule** é uma aplicação web **Single Page Application (SPA)** desenvolvida para simular o ambiente de provas escolares. 
 
-## Expanding the ESLint configuration
+O grande diferencial técnico deste projeto é sua **Arquitetura de Renderização Condicional (RBAC)**: o sistema utiliza uma única base de código que adapta dinamicamente a interface, as rotas e as permissões de dados dependendo do nível do usuário logado (**Administrador**, **Professor** ou **Aluno**).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🏆 Principais Destaques
+- **Gestão de Estado Global:** Controle de sessão e persistência via LocalStorage.
+- **Lógica de Notas Dinâmica:** Feedback visual de desempenho (Cores baseadas na nota: Atenção/Bom/Excelente).
+- **Onboarding Automatizado:** Geração automática de credenciais e IDs únicos para novos usuários.
+
+---
+
+## 🔐 Acesso de Demonstração (Auto-Seed)
+
+O projeto conta com um sistema de **"Auto-Seed"**. Ao abrir a aplicação pela primeira vez, o banco de dados local é populado automaticamente.
+
+Utilize as credenciais abaixo para acessar o nível máximo (Admin) e criar outros usuários para teste:
+
+| Perfil | ID | Senha |
+| :--- | :--- | :--- |
+| **Administrador** | `999` | `userPadrao*` |
+
+### 🧪 Roteiro de Teste Recomendado:
+1. Faça login como **Admin**.
+2. Vá em "Cadastrar" e crie um usuário **Professor** (note a senha gerada automaticamente: `Vestibule` + `ID`).
+3. Crie um usuário **Aluno**.
+4. Faça logout e entre com as novas contas para ver a interface se transformar.
+
+---
+
+## ⚙️ Funcionalidades Técnicas
+
+### 1. Sistema de Autenticação & Segurança
+- Login com validação de credenciais criptografadas (simulação).
+- Geração de IDs não-sequenciais aleatórios para segurança.
+- Senhas padrão dinâmicas para facilitar o onboarding (`Vestibule` + `ID`).
+
+### 2. Controle de Acesso (RBAC)
+- **Admin:** CRUD completo de Usuários, Simulados e Matérias. Visualização de todas as notas.
+- **Professor:** Criação de simulados apenas para suas matérias. Visualização de notas filtradas.
+- **Aluno:** Acesso "Read-only" aos simulados disponíveis. Histórico de notas próprias.
+
+### 3. Engine de Simulado
+- Validação de formulários (limite de caracteres).
+- Algoritmo de correção automática (comparação de gabarito).
+- Cálculo de média e estilização condicional de tags (Amarelo < 7, Azul < 9, Verde > 9).
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Core:** ReactJS + Vite
+- **Estilização:** CSS3 Moderno (Variáveis e Flexbox/Grid)
+- **Linguagem:** JavaScript (ES6+)
+- **Persistência:** LocalStorage API (Simulando Banco de Dados NoSQL)
+- **Ícones:** React Icons
+
+---
+
+## 🚀 Como rodar o projeto localmente
+
+```bash
+# 1. Clone o repositório
+$ git clone [https://github.com/pbotelhodev/vestibule-platform.git](https://github.com/pbotelhodev/vestibule-platform.git)
+
+# 2. Acesse a pasta
+$ cd vestibule-platform
+
+# 3. Instale as dependências
+$ npm install
+
+# 4. Execute o servidor de desenvolvimento
+$ npm run dev
